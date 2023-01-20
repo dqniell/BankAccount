@@ -1,15 +1,18 @@
+import java.util.Arrays;
 import java.util.Scanner;
 public class ATM {
     private Account savings;
     private Account checking;
-    private Customer customer;
+    //private Customer customer;
 
     public ATM() {
     }
 
     public void play() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Welcome to the ATM. It's time to make a new account. ");
+        System.out.println("-------------------------------------------------------");
+        System.out.println(" Welcome to the ATM. It's time to make a new account.");
+        System.out.println("-------------------------------------------------------");
         System.out.print("What is your name? ");
         String customerName = scan.nextLine();
         System.out.print("Enter a pin: ");
@@ -20,12 +23,14 @@ public class ATM {
         checking = new Account("Checking", 0, customer1);
         boolean keepGoing = true;
         while (keepGoing) {
+            System.out.println("------------------------");
+            System.out.println("Options: ");
             System.out.println("1. Withdraw money\n" +
                     "2. Deposit money\n" +
                     "3. Transfer money between accounts\n" +
                     "4. Get account balances\n" +
                     "5. Change PIN\n" +
-                    "6. Exit\n");
+                    "6. Exit\n" + "------------------------");
 
             System.out.print("Enter a choice: ");
             int option = scan.nextInt();
@@ -36,14 +41,16 @@ public class ATM {
                 String option1 = scan.nextLine();
                 if (option1.toUpperCase().equals("SAVINGS")) {
                     System.out.print("How much money would you like to withdraw? ");
+                    System.out.println();
                     int withdrawAmount = scan.nextInt();
                     scan.nextLine();
-                    savings.withdraw(withdrawAmount);
+                    savings.withdraw(withdrawAmount, false);
+
                 } else if (option1.toUpperCase().equals("CHECKING")) {
                     System.out.print("How much money would you like to withdraw? ");
                     int withdrawAmount = scan.nextInt();
                     scan.nextLine();
-                    checking.withdraw(withdrawAmount);
+                    checking.withdraw(withdrawAmount, false);
                 }
             } else if (option == 2) {
                 System.out.print("Would you like to deposit to your Savings or Checking? ");
@@ -85,7 +92,6 @@ public class ATM {
             if (option != 6) {
                 System.out.print("Would you like to do anything else? ");
                 String answer = scan.nextLine();
-                System.out.println();
                 if(answer.toUpperCase().equals("YES")){
                     System.out.print("Please re-enter your pin: ");
                     int pin2 = scan.nextInt();
@@ -96,7 +102,6 @@ public class ATM {
                         System.out.print("Please re-enter your pin: ");
                         pin2 = scan.nextInt();
                         scan.nextLine();
-                        System.out.println();
                         counter++;
                         if (counter == 3) {
                             System.out.println("GO AWAY THIEF!");
@@ -111,7 +116,7 @@ public class ATM {
 
             }
         }
-        System.out.println("Thank you for using the ATM");
+        System.out.println("Thank you for using the ATM " + customer1.getName() + "!");
     }
 }
 
