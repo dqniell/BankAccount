@@ -1,9 +1,7 @@
-import java.util.Arrays;
 import java.util.Scanner;
 public class ATM {
     private Account savings;
     private Account checking;
-    //private Customer customer;
 
     public ATM() {
     }
@@ -41,7 +39,6 @@ public class ATM {
                 String option1 = scan.nextLine();
                 if (option1.toUpperCase().equals("SAVINGS")) {
                     System.out.print("How much money would you like to withdraw? ");
-                    System.out.println();
                     int withdrawAmount = scan.nextInt();
                     scan.nextLine();
                     savings.withdraw(withdrawAmount, false);
@@ -80,7 +77,7 @@ public class ATM {
             } else if (option == 4) {
                 System.out.println("The balance for your checking account is: $ " + checking.getBalance());
                 System.out.println("The balance for your savings account is: $ " + savings.getBalance());
-                System.out.println();
+                System.out.println("------------------------------------------------------------");
             } else if (option == 5) {
                 System.out.print("What would like your new pin to be? ");
                 int newPin = scan.nextInt();
@@ -96,7 +93,6 @@ public class ATM {
                     System.out.print("Please re-enter your pin: ");
                     int pin2 = scan.nextInt();
                     scan.nextLine();
-                    System.out.println();
                     int counter = 1;
                     while(!customer1.pinCheck(pin2) && counter <= 2){
                         System.out.print("Please re-enter your pin: ");

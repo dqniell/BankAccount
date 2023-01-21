@@ -34,10 +34,11 @@ public class Account {
                 System.out.println("------------------------------------------------------------");
             } else {
                 System.out.println("We cannot provide you the proper bills for your transaction.");
+                System.out.println("------------------------------------------------------------");
             }
         } else {
             System.out.println("You do not have enough money!");
-            System.out.println();
+            System.out.println("------------------------------------------------------------");
         }
     }
 
@@ -60,13 +61,11 @@ public class Account {
         return name;
     }
 
-    public static int getID() {
-        return ID;
-    }
-
     public static void incrementID() {
         ID++;
     }
+
+
 
 
 }
