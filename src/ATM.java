@@ -6,6 +6,7 @@ public class ATM {
     public ATM() {
     }
 
+   //method that has most of the logic
     public void play() {
         Scanner scan = new Scanner(System.in);
         System.out.println("-------------------------------------------------------");
@@ -87,7 +88,7 @@ public class ATM {
                 keepGoing = false;
             }
             if (option != 6) {
-                System.out.print("Would you like to do anything else? ");
+                System.out.print("Would you like to do anything else? (yes or no) ");
                 String answer = scan.nextLine();
                 if(answer.toUpperCase().equals("YES")){
                     System.out.print("Please re-enter your pin: ");
